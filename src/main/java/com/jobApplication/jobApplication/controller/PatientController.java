@@ -74,6 +74,18 @@ public class PatientController {
         return patientService.findAllPatientsByMedName(medicationName, pageable);
     }
 
+    @Operation(
+            summary = "Generate medication schedule report",
+            method = "GET",
+            description = "This endpoint generates a PDF report for the medication schedule of a patient."
+    )
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Report generated successfully."),
+                    @ApiResponse(responseCode = "404", description = "Patient or medications not found."),
+                    @ApiResponse(responseCode = "500", description = "An error occurred while generating the report.")
+            }
+    )
     @GetMapping("/{id}/report")
     public ResponseEntity<byte[]> generateReport(
             @PathVariable(value = "id") Integer id) throws DocumentException, IOException {

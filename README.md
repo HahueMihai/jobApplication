@@ -11,13 +11,15 @@ Open Api Swagger can be found here: http://localhost:8080/v3/api-docs/Medication
 - **Exception Handling** returning `SecurityException` when the entity ID is not found
 - The `@Service`, `@Repository`, and `@RestController` annotations in Spring Boot configure these classes to be managed as singletons by the Spring container
 
+## Field Limitations
+
+- **Email**: Field is limited to a specific format and length to ensure valid email addresses.
+- **Name**: Field is limited to a specific length.
+- **Dosage**: Field is limited to a specific length.
+- **Frequency**: Field is limited to a specific length.
+
 ## Generating Client API using Swagger Codegen
-
-**Swagger Codegen** is a tool that allows you to automatically generate client libraries, server stubs, API documentation, and configuration from an OpenAPI Specification. It supports various languages and frameworks.
-
 ### Steps to Generate API Client Library
-
-
 **Generate Client Library**
 
 Use the following command to generate the client library in Java using Swagger Codegen CLI:

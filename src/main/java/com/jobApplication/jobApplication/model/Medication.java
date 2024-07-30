@@ -2,6 +2,7 @@ package com.jobApplication.jobApplication.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.Instant;
@@ -20,12 +21,15 @@ public class Medication {
     private Integer id;
 
     @Column
+    @Size(min = 1, max = 255)
     private String name;
 
     @Column
+    @Size(min = 1, max = 255)
     private String dosage;
 
     @Column
+    @Size(min = 1, max = 255)
     private String frequency;
 
     @Column
