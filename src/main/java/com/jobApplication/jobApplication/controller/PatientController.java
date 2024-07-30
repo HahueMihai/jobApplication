@@ -1,8 +1,10 @@
 package com.jobApplication.jobApplication.controller;
 
+import com.itextpdf.text.DocumentException;
 import com.jobApplication.jobApplication.model.Medication;
 import com.jobApplication.jobApplication.model.Patient;
 import com.jobApplication.jobApplication.service.PatientService;
+import com.jobApplication.jobApplication.service.PdfService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -11,8 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -22,6 +30,9 @@ public class PatientController {
 
     @Autowired
     private PatientService patientService;
+
+    @Autowired
+    private PdfService pdfService;
 
     @Operation(
             summary = "Save patients to db",
@@ -61,5 +72,16 @@ public class PatientController {
                                                   @RequestParam(defaultValue = "10") Integer pageSize){
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         return patientService.findAllPatientsByMedName(medicationName, pageable);
+    }
+
+    @GetMapping("/{id}/report")
+    public ResponseEntity<byte[]> generateReport(
+            @PathVariable(value = "id") Integer id) throws DocumentException, IOException {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.add("Content-Disposition", "inline; filename=report.pdf");
+        return new ResponseEntity<>(
+                pdfService.generateMedicationSchedulePdf(id), headers, HttpStatus.OK);
     }
 }

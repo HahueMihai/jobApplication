@@ -83,6 +83,16 @@ public class MedicationService {
         return medication.get();
     }
 
+    public List<Medication> getMedicationByPatientId(Integer id){
+        List<Medication> medications= medicationRepository.findByPatientId(id);
+        if(medications.isEmpty()){
+            logger.error("Medication with id: {} does not exist!", id);
+            throw new SecurityException("Medication does not exist!");
+        }
+        logger.info("Medication retrieved successfully.");
+        return medications;
+    }
+
     public List<Medication> medicationList(Pageable pageable){
         logger.info("List of medication retrieved successfully.");
         return medicationRepository.findAll(pageable);
