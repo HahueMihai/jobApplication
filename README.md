@@ -18,6 +18,9 @@ Open Api Swagger can be found here: http://localhost:8080/v3/api-docs/Medication
 - **Dosage**: Field is limited to a specific length.
 - **Frequency**: Field is limited to a specific length.
 
+## Postman Collection
+I have added the postman collection that can be found in the resources package :src/main/resources/postman
+
 ## Generating Client API using Swagger Codegen
 ### Steps to Generate API Client Library
 **Generate Client Library**

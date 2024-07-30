@@ -62,6 +62,194 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/medication/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medication",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Medication",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"Med1000\",\r\n    \"dosage\":\"2\",\r\n    \"frequency\":\"per day\",\r\n    \"patientId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/medication",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Med By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/medication/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medication",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email to Pacients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/patients/getPatientsByMedName/Med1?pageNumber&pageSize",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"patients",
+						"getPatientsByMedName",
+						"Med1"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": null
+						},
+						{
+							"key": "pageSize",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All sorted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/medication/findAll?pageNumber&pageSize&sortBy&sortDirection",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medication",
+						"findAll"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": null
+						},
+						{
+							"key": "pageSize",
+							"value": null
+						},
+						{
+							"key": "sortBy",
+							"value": null
+						},
+						{
+							"key": "sortDirection",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Email to Pacient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subject\":\"Hello patient\",\r\n    \"message\":\"Dont forget to take your medication\",\r\n    \"buttonText\":\"Take!\",\r\n    \"buttonUrl\":\"http://localhost:8080/mail/take/mihaitahahue@yahoo.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/mail/send/mihaitahahue@yahoo.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mail",
+						"send",
+						"mihaitahahue@yahoo.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "The patient has taken their prescribed medicine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/mail//take/mihaitahahue@yahoo.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"mail",
+						"",
+						"take",
+						"mihaitahahue@yahoo.com"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
