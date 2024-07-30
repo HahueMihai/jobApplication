@@ -26,10 +26,17 @@ public class PdfService {
 
         document.open();
         for (Medication medication : medicationList) {
-            document.add(new Paragraph(medication.getName()));//compun mesaj
+            document.add(new Paragraph(getMessage(medication)));
         }
         document.close();
 
         return out.toByteArray();
+    }
+
+    private String getMessage(Medication medication){
+        return "Medication :"+medication.getName()+" should be taken "+medication.getDosage()+" "+medication.getFrequency()+" from "+medication.getStartTime()
+                +" on "+medication.getEndTime()+" .";
+
+
     }
 }
